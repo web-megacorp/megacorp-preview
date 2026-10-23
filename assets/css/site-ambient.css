@@ -1,0 +1,42 @@
+/* Shared trading atmosphere: behind content, never over controls or text. */
+body {
+  isolation: isolate;
+  background:
+    radial-gradient(ellipse at 12% 28%, #7be6d418, transparent 48%),
+    radial-gradient(ellipse at 88% 8%, #d8b14a18, transparent 46%),
+    url('../images/trading-atmosphere.svg') center top / cover no-repeat,
+    linear-gradient(150deg, #080b0d, #08090b 55%, #0a0c0e) !important;
+  background-attachment: fixed !important;
+}
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: radial-gradient(140.8px circle at var(--ambient-x, 50%) var(--ambient-y, 30%), #d8b14aa6, #d8b14a29 42%, transparent 75%);
+  mask-image: none;
+  opacity: 0;
+  transition: opacity 400ms ease;
+}
+body.ambient-cursor-active::before { opacity: .1275; }
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    linear-gradient(#ffffff02 1px, transparent 1px),
+    linear-gradient(90deg, #ffffff02 1px, transparent 1px);
+  background-size: 96px 96px;
+  opacity: .35;
+}
+/* These older canvas layers are superseded by the shared atmosphere. */
+.shader-backdrop, .shader-overlay, .scanline-overlay { display: none; }
+@media (hover: none), (pointer: coarse), (prefers-reduced-motion: reduce) {
+  body.ambient-cursor-active::before { opacity: 0; transition: none; }
+}
+@media (max-width: 700px) {
+  body { background-size: auto, auto, auto 100vh, auto !important; }
+}

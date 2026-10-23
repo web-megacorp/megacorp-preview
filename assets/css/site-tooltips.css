@@ -1,0 +1,6 @@
+/* Use data-tooltip="Helpful text" on future controls; native title labels are upgraded too. */
+.site-tooltip { position: fixed; z-index: 200; max-width: min(280px, calc(100vw - 24px)); padding: 10px 13px; border: 1px solid #d8b14a55; border-radius: 10px; background: #111a1a; color: #eee4c9; box-shadow: 0 8px 28px #0006; font: 500 12px/1.5 "Geist", "Segoe UI", sans-serif; pointer-events: none; opacity: 0; transform: translateY(4px); transition: opacity 140ms ease, transform 140ms ease; }
+.site-tooltip.is-visible { opacity: 1; transform: none; }
+.site-tooltip[hidden] { display: none; }
+@media (prefers-reduced-motion: reduce) { .site-tooltip { transition: none; } }
+@media (forced-colors: active) { .site-tooltip { background: Canvas; color: CanvasText; border-color: CanvasText; } }
